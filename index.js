@@ -42,7 +42,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     store: new MongoStore({
-        mongoUrl: process.env.MONGO_URL,
+        mongoUrl: process.env.MONGODB_URL,
         autoRemove: 'disabled'
     })
 }));
