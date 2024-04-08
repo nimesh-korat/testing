@@ -42,7 +42,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({
-        mongoUrl: 'mongodb+srv://koratnimesh30:Nimesh123@cluster0.ayot4f5.mongodb.net/Products',
+        mongoUrl: process.env.MONGODB_URL,
         autoRemove: 'interval',
         autoRemoveInterval: 1440
     }),
