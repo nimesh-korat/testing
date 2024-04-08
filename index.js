@@ -26,9 +26,7 @@ const PORTS = 8001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors({
-    origin: (origin, callback) => {
-        callback(null, true);
-    },
+    origin: process.env.FRONTEND_URL, // Replace with your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
