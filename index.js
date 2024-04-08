@@ -46,7 +46,7 @@ app.use(session({
         autoRemove: 'native',
     }),
     cookie: {
-        secure: true, // Use secure cookies for HTTPS
+        secure: false, // Use secure cookies for HTTPS
         sameSite: 'none' // Set SameSite attribute to 'None' for cross-site requests
     }
 }));
