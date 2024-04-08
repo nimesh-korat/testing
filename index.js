@@ -46,7 +46,8 @@ app.use(session({
     }),
     cookie: {
         secure: true, // Use secure cookies for HTTPS
-        sameSite: 'none' // Set SameSite attribute to 'None' for cross-site requests
+        sameSite: 'none', // Set SameSite attribute to 'None' for cross-site requests
+        domain: process.env.FRONTEND_URL, // Replace with your frontend URL
     }
 }));
 
