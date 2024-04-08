@@ -39,7 +39,7 @@ app.use('/images/profilePics', express.static('images/profilePics'));
 // Configure express-session middleware
 app.use(session({
     secret: 'your-secret-key',
-    resave: true,
+    resave: false,
     saveUninitialized: false,
     store: new MongoStore({
         mongoUrl: 'mongodb+srv://koratnimesh30:Nimesh123@cluster0.ayot4f5.mongodb.net/Products',
