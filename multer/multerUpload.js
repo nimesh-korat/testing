@@ -39,7 +39,7 @@ const editProductPicStorage = multer.diskStorage({
 
     //path to store the profilePic
     destination: (req, file, cb) => {
-        cb(null, "../frontend/src/images/productPics");
+        cb(null, "./images");
     },
 
     //filename to give to the profilePic

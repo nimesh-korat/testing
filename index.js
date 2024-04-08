@@ -25,6 +25,8 @@ const PORTS = 8001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
+app.use('/images/productPics', express.static('images/productPics'));
+app.use('/images/profilePics', express.static('images/profilePics'));
 
 // Configure express-session middleware
 app.use(session({
@@ -65,6 +67,6 @@ app.post("/logout", Logout);
 connectDB();
 
 //Activate Server
-app.listen( process.env.PORT || PORTS, () => {
+app.listen(process.env.PORT || PORTS, () => {
     console.log("Server Started on port: ", process.env.PORT);
 });
