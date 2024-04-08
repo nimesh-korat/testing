@@ -25,17 +25,6 @@ const PORTS = 8001;
 //Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors({
-    origin: (origin, callback) => {
-        callback(null, true);
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
-}));
-app.use('/images/productPics', express.static('images/productPics'));
-app.use('/images/profilePics', express.static('images/profilePics'));
-
 // Configure express-session middleware
 app.use(session({
     secret: 'your-secret-key',
@@ -50,6 +39,18 @@ app.use(session({
         secure: true, // Use secure cookies for HTTPS
     }
 }));
+
+app.use(cors({
+    origin: (origin, callback) => {
+        callback(null, true);
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
+
+app.use('/images/productPics', express.static('images/productPics'));
+app.use('/images/profilePics', express.static('images/profilePics'));
 
 //signup API
 app.post("/signup", profilePicUpload.single("profilePic"), SignUpApi);
