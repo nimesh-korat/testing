@@ -43,11 +43,11 @@ app.use(session({
     saveUninitialized: true,
     store: new MongoStore({
         mongoUrl: process.env.MONGODB_URL,
-        autoRemove: 'native',
+        autoRemove: 'interval',
+        autoRemoveInterval: 1440
     }),
     cookie: {
         secure: false, // Use secure cookies for HTTPS
-        sameSite: 'none' // Set SameSite attribute to 'None' for cross-site requests
     }
 }));
 
