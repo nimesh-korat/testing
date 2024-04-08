@@ -14,6 +14,7 @@ const { EditProduct } = require("./apis/editProduct");
 const { DeleteProduct } = require("./apis/deleteProduct");
 const { FetchAllProducts } = require("./apis/fetchAllProducts");
 const MongoStore = require('connect-mongo');
+const cookieParser = require("cookie-parser");
 require('dotenv').config();
 //initialize app
 const app = express();
@@ -26,6 +27,7 @@ const PORTS = 8001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // Configure express-session middleware
+app.use(cookieParser());
 app.use(session({
     secret: 'your-secret-key',
     resave: false,
