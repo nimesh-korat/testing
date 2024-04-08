@@ -43,8 +43,16 @@ app.use(session({
     saveUninitialized: true,
     store: new MongoStore({
         mongoUrl: process.env.MONGODB_URL,
-        autoRemove: 'disabled'
-    })
+        autoRemove: 'interval',
+        autoRemoveInterval: 1440, // Remove expired sessions every 10 minutes (optional)
+        crypto: {
+            secret: 'your-crypto-secret'
+        }
+    }),
+    cookie: {
+        secure: true, // Use secure cookies for HTTPS
+        sameSite: 'none' // Set SameSite attribute to 'None' for cross-site requests
+    }
 }));
 
 //signup API
