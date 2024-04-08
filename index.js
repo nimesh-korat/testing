@@ -36,7 +36,6 @@ app.use(session({
         autoRemoveInterval: 1440
     }),
     cookie: {
-        domain: 'testing-front-jf19.onrender.com',
         secure: false, // Use secure cookies for HTTPS
         sameSite: 'none'
     }
