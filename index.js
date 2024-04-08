@@ -25,10 +25,13 @@ const PORTS = 8001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors({
-    origin: '*',
+    origin: (origin, callback) => {
+        callback(null, true);
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-  }));
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
 app.use('/images/productPics', express.static('images/productPics'));
 app.use('/images/profilePics', express.static('images/profilePics'));
 
