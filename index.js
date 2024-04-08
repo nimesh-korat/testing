@@ -46,7 +46,6 @@ app.use(session({
     }),
     cookie: {
         secure: true, // Use secure cookies for HTTPS
-        sameSite: 'none' // Set SameSite attribute to 'None' for cross-site requests
     }
 }));
 
