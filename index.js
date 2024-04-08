@@ -43,12 +43,7 @@ app.use(session({
     saveUninitialized: true,
     store: new MongoStore({
         mongoUrl: process.env.MONGO_URL,
-        ttl: 14 * 24 * 60 * 60, // Session TTL (optional)
-        autoRemove: 'interval',
-        autoRemoveInterval: 1440, // Remove expired sessions every 10 minutes (optional)
-        crypto: {
-            secret: 'your-crypto-secret'
-        }
+        autoRemove: 'disabled'
     })
 }));
 
