@@ -13,6 +13,7 @@ const { GetProduct } = require("./apis/getProduct");
 const { EditProduct } = require("./apis/editProduct");
 const { DeleteProduct } = require("./apis/deleteProduct");
 const { FetchAllProducts } = require("./apis/fetchAllProducts");
+const MongoStore = require('connect-mongo');
 require('dotenv').config();
 //initialize app
 const app = express();
@@ -39,7 +40,11 @@ app.use('/images/profilePics', express.static('images/profilePics'));
 app.use(session({
     secret: 'your-secret-key',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: new MongoStore({ 
+        mongoUrl: process.env.MONGO_URL,
+        autoRemove: 'native' // Optional. Automatically remove expired sessions.
+    })
 }));
 
 //signup API
