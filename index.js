@@ -44,10 +44,7 @@ app.use(session({
     store: new MongoStore({
         mongoUrl: process.env.MONGODB_URL,
         autoRemove: 'interval',
-        autoRemoveInterval: 1440, // Remove expired sessions every 10 minutes (optional)
-        crypto: {
-            secret: 'your-crypto-secret'
-        }
+        autoRemoveInterval: 1440
     }),
     cookie: {
         secure: true, // Use secure cookies for HTTPS
