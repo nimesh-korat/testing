@@ -5,7 +5,7 @@ const profilePicStorage = multer.diskStorage({
 
     //path to store the profilePic
     destination: (req, file, cb) => {
-        cb(null, "../frontend/src/images/profilePics");
+        cb(null, "./images/productPics");
     },
 
     //filename to give to the profilePic
@@ -22,7 +22,7 @@ const productPicStorage = multer.diskStorage({
 
     //path to store the profilePic
     destination: (req, file, cb) => {
-        cb(null, "../frontend/src/images/productPics");
+        cb(null, "./images/productPics");
     },
 
     //filename to give to the profilePic
@@ -39,7 +39,7 @@ const editProductPicStorage = multer.diskStorage({
 
     //path to store the profilePic
     destination: (req, file, cb) => {
-        cb(null, "./images");
+        cb(null, "./images/");
     },
 
     //filename to give to the profilePic
