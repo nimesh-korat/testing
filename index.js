@@ -43,9 +43,7 @@ app.use(session({
 }));
 
 app.use(cors({
-    origin: (origin, callback) => {
-        callback(null, true);
-    },
+    origin: 'https://testing-front-jf19.onrender.com',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
