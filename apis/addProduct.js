@@ -40,7 +40,7 @@ async function AddProduct(req, res) {
             .json({ success: true, message: "Product Added Successful" });
     } catch (error) {
         console.error("Product Add Failed:", error);
-        return res.status(500).json({ success: false, error: "Product Add Failed" });
+        return res.status(500).json({ success: false, error: error.message });
     }
 }
 
