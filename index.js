@@ -36,8 +36,9 @@ app.use(session({
         autoRemoveInterval: 1440
     }),
     cookie: {
-        secure: false, // Use secure cookies for HTTPS
-        sameSite: 'none'
+        secure: true, // Use secure cookies for HTTPS
+        sameSite: 'None', // Allow cross-site cookies
+        httpOnly: true // Protect the cookie from client-side scripts
     }
 }));
 
