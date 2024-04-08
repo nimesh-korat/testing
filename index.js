@@ -38,6 +38,7 @@ app.use(session({
     cookie: {
         domain: 'testing-front-jf19.onrender.com',
         secure: true, // Use secure cookies for HTTPS
+        sameSite: 'none'
     }
 }));
 
