@@ -15,13 +15,14 @@ const { DeleteProduct } = require("./apis/deleteProduct");
 const { FetchAllProducts } = require("./apis/fetchAllProducts");
 const MongoStore = require('connect-mongo');
 const cookieParser = require("cookie-parser");
+const { createProxyMiddleware } = require('http-proxy-middleware');
 require('dotenv').config();
+
 //initialize app
 const app = express();
 
 //initialize PORT No
 const PORTS = 8001;
-
 
 //Middlewares
 app.use(express.json());
@@ -39,8 +40,6 @@ app.use(session({
     }),
     cookie: {
         secure: false, // Use secure cookies for HTTPS
-        // sameSite: 'None', // Allow cross-site cookies
-        // httpOnly: true // Protect the cookie from client-side scripts
     }
 }));
 
@@ -81,6 +80,8 @@ app.post("/deleteProduct", DeleteProduct);
 //logout API
 app.post("/logout", Logout);
 
+// Proxy for frontend requests
+app.use('/api', createProxyMiddleware({ target: 'https://testing-front-jf19.onrender.com', changeOrigin: true }));
 
 //callback to connect MongoDB
 connectDB();
