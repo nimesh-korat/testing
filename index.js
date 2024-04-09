@@ -50,6 +50,9 @@ app.use(cors({
     credentials: true
 }));
 
+// Proxy for frontend requests
+app.use('/api', createProxyMiddleware({ target: 'https://testing-front-jf19.onrender.com', changeOrigin: true }));
+
 app.use('/images/productPics', express.static('images/productPics'));
 app.use('/images/profilePics', express.static('images/profilePics'));
 
@@ -80,8 +83,6 @@ app.post("/deleteProduct", DeleteProduct);
 //logout API
 app.post("/logout", Logout);
 
-// Proxy for frontend requests
-app.use('/api', createProxyMiddleware({ target: 'https://testing-front-jf19.onrender.com', changeOrigin: true }));
 
 //callback to connect MongoDB
 connectDB();
