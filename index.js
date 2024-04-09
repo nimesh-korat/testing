@@ -50,8 +50,11 @@ app.use(cors({
     credentials: true
 }));
 
-// Proxy for frontend requests
-app.use('/api', createProxyMiddleware({ target: 'https://testing-front-jf19.onrender.com', changeOrigin: true }));
+app.use('/api', createProxyMiddleware({
+    target: 'https://testing-front-jf19.onrender.com',
+    changeOrigin: true,
+    timeout: 60000 // Set timeout to 60 seconds
+}));
 
 app.use('/images/productPics', express.static('images/productPics'));
 app.use('/images/profilePics', express.static('images/profilePics'));
