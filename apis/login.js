@@ -15,6 +15,7 @@ async function LoginApi(req, res) {
 
       //session creation
       req.session.user = { session: user, isAuth: true };
+      req.session.save((err) => console.log(err))
       const userDatas = req.session.user;
 
       res
