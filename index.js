@@ -39,7 +39,10 @@ app.use(session({
         autoRemoveInterval: 1440
     }),
     cookie: {
-        secure: false, // Use secure cookies for HTTPS
+        secure: true, // Use secure cookies for HTTPS
+        httpOnly: true,
+        sameSite: 'strict',
+        domain: '.onrender.com'
     }
 }));
 
