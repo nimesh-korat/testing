@@ -37,6 +37,7 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }));
+
 app.use(session({
     secret: 'your-secret-key',
     resave: false,
@@ -49,7 +50,8 @@ app.use(session({
     cookie: {
         secure: true,
         sameSite: 'none',
-        domain: '.onrender.com'
+        domain: '.onrender.com',
+        maxAge: 7 * 24 * 60 * 60 * 1000
     }
 }));
 
