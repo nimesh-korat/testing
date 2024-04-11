@@ -25,6 +25,7 @@ const app = express();
 const PORTS = 8001;
 
 //Middlewares
+app.set("trust proxy", 1);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // Configure express-session middleware
@@ -39,7 +40,7 @@ app.use(session({
         autoRemoveInterval: 1440
     }),
     cookie: {
-        secure: true, 
+        secure: true,
         sameSite: 'none',
         domain: '.onrender.com'
     }
