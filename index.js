@@ -28,7 +28,7 @@ const PORTS = 8001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // Configure express-session middleware
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(session({
     secret: 'your-secret-key',
     resave: false,
