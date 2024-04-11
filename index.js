@@ -30,6 +30,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // Configure express-session middleware
 // app.use(cookieParser());
+
+app.use(cors({
+    origin: 'https://testing-front-jf19.onrender.com',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
 app.use(session({
     secret: 'your-secret-key',
     resave: false,
@@ -44,13 +51,6 @@ app.use(session({
         sameSite: 'none',
         domain: '.onrender.com'
     }
-}));
-
-app.use(cors({
-    origin: 'https://testing-front-jf19.onrender.com',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
 }));
 
 app.use('/images/productPics', express.static('images/productPics'));
