@@ -41,7 +41,7 @@ app.use(cors({
 app.use(session({
     secret: 'your-secret-key',
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     store: new MongoStore({
         mongoUrl: process.env.MONGODB_URL,
         autoRemove: 'interval',
@@ -51,7 +51,7 @@ app.use(session({
         secure: true,
         sameSite: 'none',
         domain: '.onrender.com',
-        maxAge: 7 * 24 * 60 * 60 * 1000
+        maxAge: 1000 * 60 * 60 * 24 //oneDay
     }
 }));
 
