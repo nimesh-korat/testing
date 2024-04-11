@@ -41,14 +41,14 @@ app.set("trust proxy", true);
 app.use(session({
     secret: 'your-secret-key',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     // store: new MongoStore({
     //     mongoUrl: process.env.MONGODB_URL,
     //     autoRemove: 'interval',
     //     autoRemoveInterval: 1440
     // }),
     cookie: {
-        secure: false,
+        secure: true,
         sameSite: 'none',
         domain: '.nimesh.engineer',
         maxAge: 1000 * 60 * 60 * 24 //oneDay
