@@ -41,7 +41,7 @@ app.use(session({
     cookie: {
         secure: true, // Use secure cookies for HTTPS
         httpOnly: true,
-        sameSite: 'strict',
+        sameSite: 'none',
         domain: '.onrender.com'
     }
 }));
@@ -51,12 +51,6 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
-}));
-
-app.use('/api', createProxyMiddleware({
-    target: 'https://testing-front-jf19.onrender.com',
-    changeOrigin: true,
-    timeout: 60000 // Set timeout to 60 seconds
 }));
 
 app.use('/images/productPics', express.static('images/productPics'));
