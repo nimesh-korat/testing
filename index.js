@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 
 app.use(cors({
-    origin: 'https://testing-front-jf19.onrender.com',
+    origin: 'https://front.nimesh.engineer/',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
