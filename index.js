@@ -30,18 +30,12 @@ app.use(express.urlencoded({ extended: false }));
 // Configure express-session middleware
 // app.use(cookieParser());
 
-app.use(function (req, res, next) {
-    // res.header("Access-Control-Allow-Origin", "*");
-    const allowedOrigins = ['http://localhost:3000', 'https://testing-front-jf19.onrender.com'];
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
-        res.setHeader('Access-Control-Allow-Origin', origin);
-    }
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    res.header("Access-Control-Allow-credentials", true);
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
-    next();
-});
+app.use(cors({
+    origin: 'https://testing-front-jf19.onrender.com',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
 
 app.set("trust proxy", true);
 app.use(session({
@@ -55,7 +49,7 @@ app.use(session({
     // }),
     cookie: {
         secure: false,
-        domain: '.onrender.com',
+        sameSite: 'none',
         maxAge: 1000 * 60 * 60 * 24 //oneDay
     }
 }));
