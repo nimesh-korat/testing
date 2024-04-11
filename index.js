@@ -54,8 +54,7 @@ app.use(session({
     //     autoRemoveInterval: 1440
     // }),
     cookie: {
-        secure: true,
-        sameSite: 'none',
+        secure: false,
         domain: '.onrender.com',
         maxAge: 1000 * 60 * 60 * 24 //oneDay
     }
