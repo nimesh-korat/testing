@@ -25,7 +25,6 @@ const app = express();
 const PORTS = 8001;
 
 //Middlewares
-app.set("trust proxy", 1);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // Configure express-session middleware
@@ -38,15 +37,16 @@ app.use(cors({
     credentials: true
 }));
 
+app.set("trust proxy", true);
 app.use(session({
     secret: 'your-secret-key',
     resave: false,
     saveUninitialized: true,
-    store: new MongoStore({
-        mongoUrl: process.env.MONGODB_URL,
-        autoRemove: 'interval',
-        autoRemoveInterval: 1440
-    }),
+    // store: new MongoStore({
+    //     mongoUrl: process.env.MONGODB_URL,
+    //     autoRemove: 'interval',
+    //     autoRemoveInterval: 1440
+    // }),
     cookie: {
         secure: true,
         sameSite: 'none',
