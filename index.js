@@ -50,6 +50,7 @@ app.use(session({
     cookie: {
         secure: false,
         sameSite: 'none',
+        domain: '.onrender.com',
         maxAge: 1000 * 60 * 60 * 24 //oneDay
     }
 }));
